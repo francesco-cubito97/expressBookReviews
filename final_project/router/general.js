@@ -24,19 +24,19 @@ public_users.post("/register", (req,res) => {
 });
 
 
-let getAllBooks = new Promise((resolve, reject) => {
-    let myBooks = books;
+let getAllBooks = async () => {
+    let myBooks = await books;
     if(myBooks)
-        resolve(myBooks);
-});
+        return myBooks;
+};
 
 
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
   
-  getAllBooks.then((booksFound) => {
-    return res.send(JSON.stringify(booksFound, null, 4));
-  });
+  let booksFound = getAllBooks();
+  return res.send(JSON.stringify(booksFound, null, 4));
+
 });
 
 let getBookDetailsByIsbn = function(isbn) {
