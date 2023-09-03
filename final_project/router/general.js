@@ -23,6 +23,14 @@ public_users.post("/register", (req,res) => {
     return res.status(404).json({message: "Unable to register user. Please provide a username and a password"});
 });
 
+const searchBookByIsbn = (isbn) => {
+    let book = books[isbn];
+
+    return new Promise ((resolve, reject) => {
+        resolve()
+    });
+}
+
 // Get the book list available in the shop
 public_users.get('/',function (req, res) {
   
