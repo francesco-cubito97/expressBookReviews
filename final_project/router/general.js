@@ -24,17 +24,16 @@ public_users.post("/register", (req,res) => {
 });
 
 
-let getAllBooks = async () => {
-    let myBooks = await books;
-    if(myBooks)
-        return myBooks;
+let getAllBooks = () => {
+    let myBooks = books;
+    return myBooks;
 };
 
 
 // Get the book list available in the shop
-public_users.get('/',function (req, res) {
+public_users.get('/', async function (req, res) {
   
-  let booksFound = getAllBooks();
+  let booksFound = await getAllBooks();
   return res.send(JSON.stringify(booksFound, null, 4));
 
 });
